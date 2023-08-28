@@ -26,3 +26,10 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+.node_modules
+.node_modules/.cache
+.node_modules/.cache/*
+!.node_modules/.cache/index.js
+!.node_modules/.cache/index.d.ts
+!.node_modules/.cache/index.d.ts.map

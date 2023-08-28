@@ -1,0 +1,2 @@
+//! Main server file to setup and run your Express app
+//? These will define the API endpoints for user-related operations and watchlist operations, respectively. They will link routes to their respective controllers.

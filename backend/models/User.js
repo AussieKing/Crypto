@@ -1,0 +1,2 @@
+//! Model for the client/user
+//? This will be a schema for our user. It can contain details like username, email, password (hashed, of course), and an array of favorite coins or a reference to a watchlist.

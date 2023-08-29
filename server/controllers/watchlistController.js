@@ -4,6 +4,8 @@
 const User = require('../models/User');
 
 exports.addCoin = async (req, res) => {
+    console.log("Request received to add coin to watchlist");
+
     try {
         const { firebaseUID, coin } = req.body;
 

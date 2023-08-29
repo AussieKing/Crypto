@@ -183,8 +183,22 @@ T- here are no major disparities in the number of GitHub contributions between g
 - Application user interface style is clean and polished.
 - Application is responsive.
 
-
 # TO-DO's:
 - Charts not working 
 - Firebase API call not working in Heroku
 
+# OVERVIEW:
+WORKING:
+- We have a Cryptocurrency App;
+- A new user has the option to sign in/sign up via Firebase Authentication;
+- We can decide which currency (USD, AUD, GBP, EUR) we want prices to be displayed in;
+- On the HomePage.js, the CoinsTable.js component renders an API call from coingecko ( `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=100&page=1&sparkline=false`) and displays the top 100 coins by market cap;
+- when we click on a specific coin, another API call (`https://api.coingecko.com/api/v3/coins/${id}`) returns the info for that coin: this is all displayed in the CoinPage.js , which itself has 2 components: 
+1. UserSidebar.js , where a logged in user is able to see their coins added to the Watchlist (via a Drawer element) ; 
+2. CoinInfo.js , where originally I wanted to also include a chart, but for now displays just the details of that coin, and the Add/Remove to Watchlist button;
+- we have created a MongoDb connection;
+
+TO IMPLEMENT/STILL TO DO:
+- we have to get the user details (firebaseUID, email, and anything else necessary) from Firebase, and use it in a MERN stack;
+- we want to use these details and keep track of which Crypto currency the user adds to their Watchlist, so that we can implement CRUD operations in MERN (requirement of the project)
+- we want to also include in the database a section for comments, as we want to introduce the ability to leave a comment under each crypto currency once the user adds it in their Watchlist;

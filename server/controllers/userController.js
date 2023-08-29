@@ -12,8 +12,8 @@ exports.registerUser = async (req, res) => {
         // Check if user already exists
         let user = await User.findOne({ firebaseUID });
         if (user) {
-            return res.status(400).json({ msg: 'User already exists' });
-        }
+            return res.status(200).json({ msg: 'User already exists', user });
+        }        
         
         user = new User({
             firebaseUID,

@@ -58,18 +58,36 @@ const CoinPage = () => {
 
   const isCoinInWatchlist = watchlist.includes(coin?.id);
 
+  //! MERN VERSION:
   const toggleWatchlist = async () => {
     if (!user) return;
-
+  
     const updatedWatchlist = isCoinInWatchlist
       ? watchlist.filter(itemId => itemId !== coin.id)
       : [...watchlist, coin.id];
-
+  
     const coinRef = doc(db, "watchlist", user.uid);
-
+  
     try {
       await setDoc(coinRef, { coins: updatedWatchlist });
-
+  
+      // Send a request to our MongoDB backend
+      const payload = {
+        firebaseUID: user.uid,
+        coin: {
+          coinId: coin.id,
+          name: coin.name,
+          image: coin.image.large,
+          currentPrice: coin.market_data.current_price.usd
+        }
+      };
+  
+      if (isCoinInWatchlist) {
+        await axios.post('/api/watchlist/remove', payload);
+      } else {
+        await axios.post('/api/watchlist/add', payload);
+      }
+  
       setAlert({
         open: true,
         message: isCoinInWatchlist
@@ -79,8 +97,37 @@ const CoinPage = () => {
       });
     } catch (error) {
       console.log("Error updating watchlist:", error);
+      setAlert({
+        open: true,
+        message: "Error updating watchlist",
+        type: "error",
+      });
     }
   };
+  //! WORKING FIREBASE VERSION
+  // const toggleWatchlist = async () => {
+  //   if (!user) return;
+
+  //   const updatedWatchlist = isCoinInWatchlist
+  //     ? watchlist.filter(itemId => itemId !== coin.id)
+  //     : [...watchlist, coin.id];
+
+  //   const coinRef = doc(db, "watchlist", user.uid);
+
+  //   try {
+  //     await setDoc(coinRef, { coins: updatedWatchlist });
+
+  //     setAlert({
+  //       open: true,
+  //       message: isCoinInWatchlist
+  //         ? `${coin.name} removed from watchlist!`
+  //         : `${coin.name} added to watchlist!`,
+  //       type: "success",
+  //     });
+  //   } catch (error) {
+  //     console.log("Error updating watchlist:", error);
+  //   }
+  // };
 
   return (
     <CoinContainer>

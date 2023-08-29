@@ -12,36 +12,55 @@ const Signup = ({ handleClose }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
-
   const { alert, setAlert } = CryptoState(); // import the setAlert function from the CryptoContext
+  const API_URL = "http://localhost:5001/api/users";
+
 
   // handle submit function : check for password match (alert via MUI snackbar)
-  const handleSubmit = async () => {
-    if (password !== passwordConfirmation) {
+  
+const handleSubmit = async () => {
+  if (password !== passwordConfirmation) {
       setAlert({
-        open: true,
-        message: "Passwords don't match",
-        type: "error",
+          open: true,
+          message: "Passwords don't match",
+          type: "error",
       });
       return;
-    }
-    // Try catch crate new user via the firebase auth
-    try {
-      const res = await createUserWithEmailAndPassword(auth, email, password);
+  }
 
-      setAlert({
-        open: true,
-        message: `Sign Up successful! Welcome ${res.user.email}`,
-        type: "success",
+  try {
+      const res = await createUserWithEmailAndPassword(auth, email, password);
+      
+      // Now, register the user in MongoDB
+      const response = await fetch(`${API_URL}/register`, {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+              firebaseUID: res.user.uid,
+              email: email,
+          }),
       });
 
-      // after the login, close the modal
-      handleClose();
-    } catch (error) {
+      if (!response.ok) {
+          throw new Error('Failed to register user in MongoDB');
+      }
+
+      const data = await response.json();  // if you return data from your API
+
       setAlert({
-        open: true,
-        message: error.message,
-        type: "error",
+          open: true,
+          message: `Sign Up successful! Welcome ${res.user.email}`,
+          type: "success",
+      });
+
+      handleClose();
+  } catch (error) {
+      setAlert({
+          open: true,
+          message: error.message,
+          type: "error",
       });
     }
   };

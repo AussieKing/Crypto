@@ -74,6 +74,20 @@ const Watchlist = styled('div')(({ theme }) => ({
   },
 }));
 
+const CoinContainer = styled('div')(({ theme }) => ({
+  fontSize: 15,
+  textShadow: "0 0 5px black",
+  height: "50px",
+  width: "100%",
+  backgroundColor: "grey",
+  borderRadius: 10,
+  padding: 15,
+  paddingTop: 10,
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+}));
+
 const handleLogout = () => {
   auth.signOut().then(() => {
     console.log('User signed out');
@@ -130,31 +144,13 @@ const UserSidebar = () => {
 
               <Watchlist>
                 Watchlist
-                {coins.map((coin) => {
-                  if (watchlist.includes(coin.id)) {
+                {watchlist.map(coinId => {
+                  const coin = coins.find(c => c.id === coinId);
+                  if (coin) {
                     return (
-                      <div
-                        sx={{
-                          fontSize: 15,
-                          textShadow: "0 0 5px black",
-                          flex: 1,
-                          height: "200px",
-                          width: "100%",
-                          backgroundColor: "grey",
-                          borderRadius: 10,
-                          padding: 15,
-                          paddingTop: 10,
-                          display: "flex",
-                          flexDirection: "column",
-                          alignItems: "center",
-                          gap: 12,
-                          overflowY: "scroll",
-                          scrollbarWidth: "thin",
-                        }}
-                        key={coin.id}
-                      >
+                      <CoinContainer key={coin.id}>
                         <span>{coin.name}</span>
-                      </div>
+                      </CoinContainer>
                     );
                   }
                   return null;

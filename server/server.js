@@ -2,8 +2,8 @@
 //? These will define the API endpoints for user-related operations and watchlist operations, respectively. They will link routes to their respective controllers.
 
 require('dotenv').config();
-const express = require('express');
 const cors = require('cors');
+const express = require('express');
 const userRoutes = require('./routes/userRoutes');
 const watchlistRoutes = require('./routes/watchlistRoutes');
 
@@ -32,3 +32,5 @@ const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
+module.exports = app;

@@ -1,204 +1,230 @@
-# Project-3-Portfolio-Tracker
+# Project-3-Crypto-Tracker
 
-## TECHNOLOGIES USED:
-- React JS  (https://reactjs.org/)
-    - React Router DOM
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+## Description:
+This deployed React application is a full-stack crypto tracker that allows users to explore real-time data, trends, and price action related to various cryptocurrencies. It provides features for tracking portfolios and staying updated on the latest market developments.
+
+
+## Table of Contents:
+- [Overview](#Overview)
+- [The task](#The-task)
+- [Information](#Information)
+- [Visuals](#Visuals)
+- [Installation](#Installation)
+- [Technologies Used](#Technologies-Used)
+- [Folder Structure](#Folder-structure)
+- [License](#License)
+- [Author](#Author)
+- [Acknowledgments](#Acknowledgments)
+
+# Overview
+
+## The task:
+We aim to build a sophisticated full-stack application revolving around blockchain and cryptocurrency. The application will utilize React for the front end, MongoDB with Mongoose ODM for the database, and incorporate JWT authentication for secure user access. Users will be able to explore real-time cryptocurrency data, perform transactions, and stay informed about market trends.
+
+
+## Information
+## User Story:
+```
+AS A cryptocurrency enthusiast,
+I WANT to track real-time data, trends, and news of various cryptocurrencies,
+SO THAT I can make informed decisions about my investments and stay updated on the market.
+```
+## Acceptance Criteria:
+```
+GIVEN a cryptocurrency tracking application,
+WHEN I log in,
+THEN I can view a personalized dashboard with real-time cryptocurrency data and news.
+WHEN I search for a specific cryptocurrency,
+THEN I can see its current price and  historical data.
+WHEN I explore trending coins,
+THEN I can see a list of the most popular and actively traded cryptocurrencies.
+```
+
+## Visuals
+
+### Walkthrough Video and Screenshots:
+Here you will be able to see a walkthrough video of the application and screenshots of the deployed application.
+
+## Video
+[Walk-through Video](https://drive.google.com/file/d/1oYVzyGdZjqxCj_QQ859MVU4ZJ5Yk3Vto/view)
+
+## Screenshots
+### Homepage
+![Screenshot 2023-08-29 at 11 05 08 pm](https://github.com/AussieKing/Crypto/assets/126050763/552c1c23-2849-4f90-8dbe-826230655a0e)
+
+### Homepage (Responsive Design)
+![Screenshot 2023-08-29 at 11 04 33 pm](https://github.com/AussieKing/Crypto/assets/126050763/d7413db1-624b-401b-8c64-0deeea8ec680)
+
+### Single Coin page
+![Screenshot 2023-08-29 at 11 06 05 pm](https://github.com/AussieKing/Crypto/assets/126050763/aaa9c9a7-ffc5-4791-a374-472bd7429400)
+
+### Trending coins:
+![Screenshot 2023-08-29 at 11 06 53 pm](https://github.com/AussieKing/Crypto/assets/126050763/d58bbf45-1c88-4329-8f09-3b24be09ffcd)
+
+## Login
+![Screenshot 2023-08-29 at 10 58 03 pm](https://github.com/AussieKing/Crypto/assets/126050763/e82a3086-8d51-466e-b209-0462903d2ece)
+
+## Sign Up
+![Screenshot 2023-08-29 at 10 58 10 pm](https://github.com/AussieKing/Crypto/assets/126050763/2ddbdff7-6d5f-4b45-b7dc-4c0e31656333)
+
+## Firebase Authentication:
+![Screenshot 2023-08-29 at 9 08 54 pm](https://github.com/AussieKing/Crypto/assets/126050763/26f9e0f9-1130-45c8-bf06-663e5bea856c)
+
+## User Sidebar (Logged in)
+![Screenshot 2023-08-29 at 10 57 05 pm](https://github.com/AussieKing/Crypto/assets/126050763/d45e0f06-3587-450f-8f81-0bcb25ce3e53)
+
+## Database / MERN (Mongo Compass):
+![Screenshot 2023-08-29 at 9 09 38 pm](https://github.com/AussieKing/Crypto/assets/126050763/e604a2e2-2afb-449f-a324-6a7ac3dd465a)
+
+## API (Insomnia) calls:
+![Screenshot 2023-08-29 at 10 55 46 pm](https://github.com/AussieKing/Crypto/assets/126050763/5901a5f5-96f9-4dfc-b355-bab6ff614b9c)
+
+
+## Instructions:
+
+## Deployed Application Link:
+[Link](https://crypto-kings-app-7541d2cbc3bf.herokuapp.com/)
+
+## GitHub Repository:
+[Link](https://github.com/AussieKing/Crypto)
+
+
+## Installation
+1. Clone the [Git Repository](https://github.com/AussieKing/Crypto) locally on your machine.
+2. In the root folder, open Terminal and type
+```npm install && npm start```
+
+
+## Technologies Used:
+- React for the front end
+- MongoDB with Mongoose ODM for the database
+- JWT Authentication for secure user access
+- Heroku for deployment
+- React Router DOM : `npm i react-router-dom`;
+- Material UI and the Lab : `npm install @mui/material @emotion/react @emotion/styled && npm install @mui/lab @mui/material` - (https://mui.com/material-ui/getting-started/installation/)
+- Service Worker for offline functionality
+- Web Manifest for installability
+- FontAwesome [icons](https://fontawesome.com/icons)
+- License Badge: [Shields.io](https://shields.io/)
+- React Router DOM
 - Chart JS (https://www.chartjs.org/)
 - Material UI as React Library (https://mui.com/)
 - GoogleFonts (https://fonts.google.com/specimen/Inconsolata) - 300, 400, 800
 - Unsplash (Banner image by Javier Miranda https://unsplash.com/photos/MrWOCGKFVDg?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink )
 - Coingecko API : (https://www.coingecko.com/en/api)
 - Axios : to handle API requests (https://www.npmjs.com/package/axios)
-- React Alice Carousel: npm i react-alice-carousel (https://www.npmjs.com/package/react-alice-carousel)
+- React Alice Carousel: `npm i react-alice-carousel` (https://www.npmjs.com/package/react-alice-carousel)
 - html-react-parser : `npm i html-react-parser` (https://www.npmjs.com/package/html-react-parser)
 - react-chartjs-2 : `npm i react-chartjs-2` (https://www.npmjs.com/package/react-chartjs-2)
 - react google button : `npm i react-google-button` (https://www.npmjs.com/package/react-google-button)
 
-## DEPENDENCIES:
-- React Router DOM
-"npm i react-router-dom" ;
+## Folder structure
+```
+.
+├── LICENSE
+├── Procfile
+├── README.md
+├── build
+│   ├── asset-manifest.json
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── logo192.png
+│   ├── logo512.png
+│   ├── manifest.json
+│   ├── robots.txt
+│   └── static
+│       ├── css
+│       │   ├── main.a89e7a8e.css
+│       │   └── main.a89e7a8e.css.map
+│       └── js
+│           ├── 787.07ff5451.chunk.js
+│           ├── 787.07ff5451.chunk.js.map
+│           ├── main.91dd8c7e.js
+│           ├── main.91dd8c7e.js.LICENSE.txt
+│           └── main.91dd8c7e.js.map
+├── client
+│   └── build
+├── gitignore
+├── package-lock.json
+├── package.json
+├── public
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── logo192.png
+│   ├── logo512.png
+│   ├── manifest.json
+│   └── robots.txt
+├── server
+│   ├── controllers
+│   │   ├── userController.js
+│   │   └── watchlistController.js
+│   ├── models
+│   │   ├── User.js
+│   │   └── Watchlist.js
+│   ├── routes
+│   │   ├── userRoutes.js
+│   │   └── watchlistRoutes.js
+│   ├── server.js
+│   └── utils
+│       └── db.js
+└── src
+    ├── App.css
+    ├── App.js
+    ├── App.test.js
+    ├── Pages
+    │   ├── CoinPage.js
+    │   ├── CryptoContext.js
+    │   └── HomePage.js
+    ├── axiosInstance.js
+    ├── components
+    │   ├── Alert.js
+    │   ├── Authentication
+    │   │   ├── AuthModal.js
+    │   │   ├── Login.js
+    │   │   ├── Signup.js
+    │   │   └── UserSidebar.js
+    │   ├── Banner
+    │   │   ├── Banner.js
+    │   │   └── Carousel.js
+    │   ├── CoinInfo.js
+    │   ├── CoinsTable.js
+    │   ├── Header.js
+    │   └── SelectButton.js
+    ├── config
+    │   ├── api.js
+    │   ├── data.js
+    │   └── firebaseConfig.js
+    ├── firebase.js
+    ├── index.css
+    ├── index.js
+    ├── logo.svg
+    ├── reportWebVitals.js
+    └── setupTests.js
+```
 
-- Material UI and the Lab : 
-"npm install @mui/material @emotion/react @emotion/styled && npm install @mui/lab @mui/material" - (https://mui.com/material-ui/getting-started/installation/)
+## License & Copyright ©
+  
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [Open Source Initiative Link](https://opensource.org/licenses/MIT)
 
+### Copyright © 2023
+```md
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-# STEPS:
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-## STEP 1:
-Create the boilerplate React app via
-"npx create-react-app portfolio-tracker"
-
-## STEP 2:
-change name of public -> index.html to Crypto Kings
-
-## STEP 3
-delete boiler plate React App.js and preloaded styles in App.css and render basic Hello World
-
-## STEP 4
-Wrap App.js in BrowserRouter and import it.
-
-## STEP 5 :
-Create Components (Header), and Pages (CoinPage and HomePage);
-
-## STEP 6 : 
-setup Styles in MaterialUI (create classname, provide styles inside of it, create an object for classes, and provide it to the classname)
-
-## STEP 7 :
-Header (app bar) : style and render with select drop down component, and wrap the header in the ThemeProvider dark mode.
-
-## STEP 8 :
-Setup Context API (file in Pages) to set the state at the beginning. We'll use context API also in the Crypto Context.
-
-## STEP 9 :
-Import our State
-
-## STEP 10 : 
-Create Crypto context provider and wrap the whole app in in it, and make sure the state changes for all the currency toggling.
-
-## STEP 11 :
-Homepage bulding. divided in 2 parts : 
-    1) BANNER:
-        a. styling [x]
-    <!-- TODO : import of image not working -->
-        b. carousel []
-        c. API [x]
-        d. carousel [x]
-    2) COINS PORTION:
-        a. Search bar [x]
-        b. Coin Table using Basic Table inMaterial Ui [x]
-        c. API [x]
-        d. Coin Table [x]
-        e. Pagination , need to slice the returned results and create the state, and import it [x]
-
-## STEP 12 :
-Carousel.
-via `npm i react-alice-carousel`
-import `import "react-alice-carousel/lib/alice-carousel.css";` in index.js;
-
-## STEP 13 :
-Single Coin page.
-    a. styling [x]
-    b. API [x]
-    c. Coin Page [x]
-    d. Chart []
-    e. Coin Data (rank, price, market cap) [x]
-    f. Coin Description [x]
-    g. Coin Links [x]
-    h. Add to Watchlist []
-
-
-## STEP 14 :
-Login Page.
-    0. Setup Firebase (and create .env file for API key) [x]
-    a. styling [x]
-    b. Login Page [x]
-    c. Login Form [x]
-    d. Login Mutation [x]
-    e. Auth Context [x]
-    f. Auth Provider [x]
-    g. Login [x]
-    h. Logout [x]
-    i. Protected Route []
-
-## STEP 15 :
-Database Setup.
-    a. MongoDB Atlas []
-    b. Mongoose []
-    c. Models []
-    d. Connect to DB []
-    e. Create User []
-    f. Login User []
-    g. Auth Middleware []
-    h. Get User []
-    i. Logout User []
-
-## STEP 16 :
-User Sidebar/Watchlist Page.
-    a. styling (using Drawer from MUI) [x]
-    b. Watchlist Page [x]
-    c. Watchlist Table []
-    d. Watchlist Query []
-    e. Watchlist Mutation []
-    f. Add to Watchlist []
-    g. Remove from Watchlist []
-    h. Insert comment []
-    i. Delete comment []
-    j. Update comment []
-    k. Logout []
-
-## APP MUST :
-User React for front end - [x]
-Use GraphQL with a Node.js and Express.js server - []
-Use MongoDB and Mongoose ODm for Database - []
-Use Queries and Mutations for CRUD - []
-Be Deployed on Heroku - []
-Include Authentication (JWT) - []
-
-## ADD-ON :
-Add STRIPE to take donations - []
-
-## ISUES FACED:
-- commentary : I was trying to leave as many comments as possible, but turns out that that can lead to a tonne of warnings. So I had to remove some of them. I'll try to add as many as possible.
-
-## LEARNINGS:
-- Shortcuts : the RAFCE shortcut via the ES7 extension in VSCode creates the boilerplate for a functional component.
-- Material UI : I learnt how to use Material UI, and how to use the basic table, and the select drop down component.
-- CTRL + space : to see the options available for the component (and import automatically)
-- use `git config --global alias.tree '! git ls-tree --full-name --name-only -t -r HEAD | sed -e "s/[^-][^\/]*\//   |/g" -e "s/|\([^ ]\)/|-- \1/"'` to see the tree structure of the project, and call it by `git tree`
-
-
-## SCORE:
-
-### Repository Quality: 10% [x]
-- Repository has a unique name.
-- Repository follows best practices for file structure and naming conventions.
-- Repository follows best practices for class and id naming conventions, indentation, quality comments, etc.
-- Repository contains multiple descriptive commit messages.
-- Repository contains a high-quality README file with description, screenshot, and link to deployed application.
-
-### Presentation: 10%  [x]
-- Your group should present using Google Slides, Powerpoint, or a similar presentation software.
-- Every group member should speak during the presentation.
-- Your presentation should follow the Project Presentation TemplateLinks to an external site..
-
-### Collaboration: 10%  [x]
-T- here are no major disparities in the number of GitHub contributions between group members.
-### Concept: 10%  [x]
-- Application should be a unique and novel idea.
-- Your group should clearly and concisely articulate your project idea.
-
-### Technical Acceptance Criteria: 25%   []
-- Satisfies the following code requirements:
-- Application uses React for the front end.
-- Application has a GraphQL API with a Node.js and Express.js server, and uses queries and mutations for retrieving, adding, updating, and deleting data.
-- Application uses MongoDB and the Mongoose ODM for the database and protects sensitive API key information on the server.
-- Application includes user authentication using JWT.
-
-### Deployment: 20%  []
-- Application deployed at live URL on Heroku and loads with no errors.
-- Application GitHub URL submitted.
-
-### Application Quality: 15%   []
-- Application user experience is intuitive and easy to navigate.
-- Application user interface style is clean and polished.
-- Application is responsive.
-
-# TO-DO's:
-- Charts not working 
-- Firebase API call not working in Heroku
-
-# OVERVIEW:
-WORKING:
-- We have a Cryptocurrency App;
-- A new user has the option to sign in/sign up via Firebase Authentication;
-- We can decide which currency (USD, AUD, GBP, EUR) we want prices to be displayed in;
-- On the HomePage.js, the CoinsTable.js component renders an API call from coingecko ( `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=100&page=1&sparkline=false`) and displays the top 100 coins by market cap;
-- when we click on a specific coin, another API call (`https://api.coingecko.com/api/v3/coins/${id}`) returns the info for that coin: this is all displayed in the CoinPage.js , which itself has 2 components: 
-1. UserSidebar.js , where a logged in user is able to see their coins added to the Watchlist (via a Drawer element) ; 
-2. CoinInfo.js , where originally I wanted to also include a chart, but for now displays just the details of that coin, and the Add/Remove to Watchlist button;
-- we have created a MongoDb connection;
-
-TO IMPLEMENT/STILL TO DO:
-- we have to get the user details (firebaseUID, email, and anything else necessary) from Firebase, and use it in a MERN stack;
-- we want to use these details and keep track of which Crypto currency the user adds to their Watchlist, so that we can implement CRUD operations in MERN (requirement of the project)
-- we want to also include in the database a section for comments, as we want to introduce the ability to leave a comment under each crypto currency once the user adds it in their Watchlist;
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```

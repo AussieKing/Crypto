@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { HistoricalChart } from "../config/api";
 import { Line } from "react-chartjs-2";
@@ -7,6 +6,7 @@ import { styled, createTheme } from "@mui/material/styles";
 import SelectButton from "./SelectButton";
 import { chartDays } from "../config/data";
 import { CryptoState } from "../Pages/CryptoContext";
+import axiosInstance from "../axiosInstance";  // Import the custom axios instance
 
 const CoinContainer = styled("div")(({ theme }) => ({
   width: "75%", // width of the container.
@@ -50,10 +50,8 @@ const CoinInfo = ({ coin }) => {
 
   //! NEW AXIOS CODE:
   const fetchHistoricData = async () => {
-    const baseUrl = process.env.REACT_APP_API_BASE_URL;
-    const { data } = await axios.get(
-      `${baseUrl}${HistoricalChart(coin.id, days, currency)}`
-    );
+    // Using the axiosInstance directly.
+    const { data } = await axiosInstance.get(HistoricalChart(coin.id, days, currency));
     setFlag(true);
     setHistoricData(data.prices);
   };

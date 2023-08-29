@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from "react";
-import axios from "axios";
+import axiosInstance from "../axiosInstance";
 import { CryptoState } from "../Pages/CryptoContext";
 import { CoinList } from "../config/api";
 import { useNavigate } from "react-router-dom";
@@ -46,17 +46,16 @@ const CoinsTable = () => {
     // };
     //! NEW AXIOS CODE:
     const fetchCoins = async () => {
-      const baseUrl = process.env.REACT_APP_API_BASE_URL;
       setLoading(true);
       try {
-          const { data } = await axios.get(`${baseUrl}${CoinList(currency)}`);
+          const { data } = await axiosInstance.get(CoinList(currency));  // <-- Changed this line
           setCoins(data);
       } catch (error) {
           console.error("Error fetching coins:", error);
       } finally {
           setLoading(false);
       }
-  };
+    };
   
     fetchCoins();
   }, [currency]);

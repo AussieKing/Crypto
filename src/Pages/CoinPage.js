@@ -4,7 +4,7 @@
 
 import React, { useEffect, useState } from "react";
 import { Button, LinearProgress, Typography, styled } from "@mui/material";
-import axios from "axios";
+import axiosInstance from '../axiosInstance'; // <-- Make sure you've imported the correct instance
 import { useParams } from "react-router-dom";
 import parse from "html-react-parser";
 import CoinInfo from "../components/CoinInfo";
@@ -52,9 +52,8 @@ const CoinPage = () => {
   // };
   //! NEW AXIOS CODE:
   const fetchCoin = async () => {
-    const baseUrl = process.env.REACT_APP_API_BASE_URL;
     try {
-      const { data } = await axios.get(`${baseUrl}${SingleCoin(id)}`);
+      const { data } = await axiosInstance.get(SingleCoin(id));  // <-- Modified this line
       setCoin(data);
     } catch (error) {
       console.error("Error fetching coin data:", error);
@@ -100,11 +99,10 @@ const CoinPage = () => {
       //   await axios.post('/api/watchlist/add', payload);
       // }
       //! NEW AXIOS CODE:
-      const backendBaseUrl = process.env.REACT_APP_BACKEND_BASE_URL;
       if (isCoinInWatchlist) {
-        await axios.post(`${backendBaseUrl}/api/watchlist/remove`, payload);
+        await axiosInstance.post('/api/watchlist/remove', payload);
       } else {
-        await axios.post(`${backendBaseUrl}/api/watchlist/add`, payload);
+        await axiosInstance.post('/api/watchlist/add', payload);
       }
 
       setAlert({

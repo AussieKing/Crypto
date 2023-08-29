@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import AliceCarousel from "react-alice-carousel"; // carousel npm package
 import { TrendingCoins } from "../../config/api";
@@ -6,6 +5,7 @@ import { CryptoState } from "../../Pages/CryptoContext";
 import { Box } from "@mui/system";
 import { styled } from "@mui/system"; // to style the Link component
 import { Link as RouterLink } from "react-router-dom";
+import axiosInstance from "../../axiosInstance";  // Import the custom axios instance
 
 // function to add price to the carousel coins, via a RegEx (thanks google!)
 export const numberWithCommas = (number) => {
@@ -38,8 +38,8 @@ const Carousel = () => {
 
   //! NEW AXIOS CODE:
   const fetchTrendingCoins = async () => {
-    const baseUrl = process.env.REACT_APP_API_BASE_URL;
-    const { data } = await axios.get(`${baseUrl}${TrendingCoins(currency)}`);
+    // Using the axiosInstance directly.
+    const { data } = await axiosInstance.get(TrendingCoins(currency));
     console.log(data);
     setTrending(data);
   };

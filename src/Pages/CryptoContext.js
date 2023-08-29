@@ -23,6 +23,7 @@ const CryptoContext = ({ children }) => {
   const [watchlist, setWatchlist] = useState([]);
 
   useEffect(() => {
+    console.log(process.env.REACT_APP_FIREBASE_API_KEY);
     if (user) {
       const coinRef = doc(db, 'watchlist', user.uid);
       const unsubscribe = onSnapshot(coinRef, coin => {

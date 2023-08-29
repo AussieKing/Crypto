@@ -121,30 +121,6 @@ const CoinPage = () => {
       });
     }
   };
-  //! WORKING FIREBASE VERSION
-  // const toggleWatchlist = async () => {
-  //   if (!user) return;
-
-  //   const updatedWatchlist = isCoinInWatchlist
-  //     ? watchlist.filter(itemId => itemId !== coin.id)
-  //     : [...watchlist, coin.id];
-
-  //   const coinRef = doc(db, "watchlist", user.uid);
-
-  //   try {
-  //     await setDoc(coinRef, { coins: updatedWatchlist });
-
-  //     setAlert({
-  //       open: true,
-  //       message: isCoinInWatchlist
-  //         ? `${coin.name} removed from watchlist!`
-  //         : `${coin.name} added to watchlist!`,
-  //       type: "success",
-  //     });
-  //   } catch (error) {
-  //     console.log("Error updating watchlist:", error);
-  //   }
-  // };
 
   return (
     <CoinContainer>

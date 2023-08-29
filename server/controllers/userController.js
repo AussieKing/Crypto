@@ -4,6 +4,8 @@
 const User = require('../models/User');
 
 exports.registerUser = async (req, res) => {
+    console.log("Hit the register endpoint");
+
     try {
         const { firebaseUID, email } = req.body;
         

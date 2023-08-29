@@ -26,6 +26,7 @@ const CryptoContext = ({ children }) => {
     if (user) {
       const coinRef = doc(db, 'watchlist', user.uid);
       const unsubscribe = onSnapshot(coinRef, coin => {
+        
         if (coin.exists()) {
           setWatchlist(coin.data().coins);
         } else {
@@ -49,6 +50,7 @@ const CryptoContext = ({ children }) => {
         setUser(user);
       } else {
         setUser(null);
+        setWatchlist([]); // Reset watchlist
       }
     });
     return () => unsubscribe();

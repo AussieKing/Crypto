@@ -41,9 +41,20 @@ const CoinPage = () => {
   const [coin, setCoin] = useState();
   const { user, watchlist, setAlert } = CryptoState();
 
+  //! OLD WORKING CODE
+  // const fetchCoin = async () => {
+  //   try {
+  //     const { data } = await axios.get(SingleCoin(id));
+  //     setCoin(data);
+  //   } catch (error) {
+  //     console.error("Error fetching coin data:", error);
+  //   }
+  // };
+  //! NEW AXIOS CODE:
   const fetchCoin = async () => {
+    const baseUrl = process.env.REACT_APP_API_BASE_URL;
     try {
-      const { data } = await axios.get(SingleCoin(id));
+      const { data } = await axios.get(`${baseUrl}${SingleCoin(id)}`);
       setCoin(data);
     } catch (error) {
       console.error("Error fetching coin data:", error);
@@ -61,16 +72,16 @@ const CoinPage = () => {
   //! MERN VERSION:
   const toggleWatchlist = async () => {
     if (!user) return;
-  
+
     const updatedWatchlist = isCoinInWatchlist
-      ? watchlist.filter(itemId => itemId !== coin.id)
+      ? watchlist.filter((itemId) => itemId !== coin.id)
       : [...watchlist, coin.id];
-  
+
     const coinRef = doc(db, "watchlist", user.uid);
-  
+
     try {
       await setDoc(coinRef, { coins: updatedWatchlist });
-  
+
       // Send a request to our MongoDB backend
       const payload = {
         firebaseUID: user.uid,
@@ -78,16 +89,24 @@ const CoinPage = () => {
           coinId: coin.id,
           name: coin.name,
           image: coin.image.large,
-          currentPrice: coin.market_data.current_price.usd
-        }
+          currentPrice: coin.market_data.current_price.usd,
+        },
       };
-  
+
+      //! OLD WORKING CODE
+      // if (isCoinInWatchlist) {
+      //   await axios.post('/api/watchlist/remove', payload);
+      // } else {
+      //   await axios.post('/api/watchlist/add', payload);
+      // }
+      //! NEW AXIOS CODE:
+      const backendBaseUrl = process.env.REACT_APP_BACKEND_BASE_URL;
       if (isCoinInWatchlist) {
-        await axios.post('/api/watchlist/remove', payload);
+        await axios.post(`${backendBaseUrl}/api/watchlist/remove`, payload);
       } else {
-        await axios.post('/api/watchlist/add', payload);
+        await axios.post(`${backendBaseUrl}/api/watchlist/add`, payload);
       }
-  
+
       setAlert({
         open: true,
         message: isCoinInWatchlist
@@ -138,9 +157,7 @@ const CoinPage = () => {
           height="200"
           style={{ marginBottom: 20 }}
         />
-        <Typography variant="h3">
-          {coin?.name}
-        </Typography>
+        <Typography variant="h3">{coin?.name}</Typography>
         <Typography variant="subtitle1">
           {parse(coin?.description.en.split(". ")[0])}.
         </Typography>
@@ -161,7 +178,9 @@ const CoinPage = () => {
                 }}
                 onClick={toggleWatchlist}
               >
-                {isCoinInWatchlist ? "Remove from Watchlist" : "Add to Watchlist"}
+                {isCoinInWatchlist
+                  ? "Remove from Watchlist"
+                  : "Add to Watchlist"}
               </Button>
             )}
           </span>
@@ -169,7 +188,7 @@ const CoinPage = () => {
       </CoinSidebar>
       <CoinInfo coin={coin} />
     </CoinContainer>
-  ); 
+  );
 };
 
 export default CoinPage;

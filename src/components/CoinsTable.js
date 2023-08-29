@@ -32,17 +32,32 @@ const CoinsTable = () => {
   const { Symbol, currency } = CryptoState();
 
   useEffect(() => {
+    //! OLD WORKING CODE
+    // const fetchCoins = async () => {
+    //   setLoading(true);
+    //   try {
+    //     const { data } = await axios.get(CoinList(currency));
+    //     setCoins(data);
+    //   } catch (error) {
+    //     console.error("Error fetching coins:", error);
+    //   } finally {
+    //     setLoading(false);
+    //   }
+    // };
+    //! NEW AXIOS CODE:
     const fetchCoins = async () => {
+      const baseUrl = process.env.REACT_APP_API_BASE_URL;
       setLoading(true);
       try {
-        const { data } = await axios.get(CoinList(currency));
-        setCoins(data);
+          const { data } = await axios.get(`${baseUrl}${CoinList(currency)}`);
+          setCoins(data);
       } catch (error) {
-        console.error("Error fetching coins:", error);
+          console.error("Error fetching coins:", error);
       } finally {
-        setLoading(false);
+          setLoading(false);
       }
-    };
+  };
+  
     fetchCoins();
   }, [currency]);
 

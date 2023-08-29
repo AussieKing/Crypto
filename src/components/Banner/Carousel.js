@@ -1,15 +1,16 @@
-import axios from 'axios';
+import axios from "axios";
 import { useEffect, useState } from "react";
-import AliceCarousel from "react-alice-carousel";  // carousel npm package
+import AliceCarousel from "react-alice-carousel"; // carousel npm package
 import { TrendingCoins } from "../../config/api";
 import { CryptoState } from "../../Pages/CryptoContext";
 import { Box } from "@mui/system";
-import { styled } from '@mui/system';  // to style the Link component
-import { Link as RouterLink } from 'react-router-dom';
+import { styled } from "@mui/system"; // to style the Link component
+import { Link as RouterLink } from "react-router-dom";
 
 // function to add price to the carousel coins, via a RegEx (thanks google!)
-export const numberWithCommas = (number) => {  // pass on the number as a parameter
-  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");  // and return the number with a comma via the RegEx
+export const numberWithCommas = (number) => {
+  // pass on the number as a parameter
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); // and return the number with a comma via the RegEx
 }; // export it so we can use it in other components
 
 // Create a styled version of the Link component
@@ -23,28 +24,41 @@ const StyledLink = styled(RouterLink)(({ theme }) => ({
   textDecoration: "none",
 }));
 
-const Carousel = () => {  // creating the carousel component with the useState hook and the CryptoState hook
+const Carousel = () => {
+  // creating the carousel component with the useState hook and the CryptoState hook
   const [trending, setTrending] = useState([]);
   const { currency, symbol } = CryptoState();
 
-  const fetchTrendingCoins = async () => {  // function to fetch the trending coins, async as we are fetching data from an API (using await)
-    const { data } = await axios.get(TrendingCoins(currency));
+  //! OLD WORKING CODE
+  // const fetchTrendingCoins = async () => {  // function to fetch the trending coins, async as we are fetching data from an API (using await)
+  //   const { data } = await axios.get(TrendingCoins(currency));
+  //   console.log(data);
+  //   setTrending(data);
+  // };
+
+  //! NEW AXIOS CODE:
+  const fetchTrendingCoins = async () => {
+    const baseUrl = process.env.REACT_APP_API_BASE_URL;
+    const { data } = await axios.get(`${baseUrl}${TrendingCoins(currency)}`);
     console.log(data);
     setTrending(data);
   };
 
-  useEffect(() => {  // useEffect to run whatever is rendered inside the component, and ES Lint to ignore the dependency! (was returning an error without it)
+  useEffect(() => {
+    // useEffect to run whatever is rendered inside the component, and ES Lint to ignore the dependency! (was returning an error without it)
     fetchTrendingCoins();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currency]);
 
-  const items = trending.map((coin) => {  // map through the trending coins from the state
-    let profit = coin?.price_change_percentage_24h >= 0;  // if the price change is greater than 0, it is a profit
+  const items = trending.map((coin) => {
+    // map through the trending coins from the state
+    let profit = coin?.price_change_percentage_24h >= 0; // if the price change is greater than 0, it is a profit
 
-    return (   // link to navigate from one page to another
+    return (
+      // link to navigate from one page to another
       <StyledLink to={`/coins/${coin.id}`}>
         <img
-          src={coin?.image}   // image of the coin
+          src={coin?.image} // image of the coin
           alt={coin.name}
           height="80"
           sx={{ marginBottom: 10 }}
@@ -52,17 +66,17 @@ const Carousel = () => {  // creating the carousel component with the useState h
         {/* display the name of the coin, and its % gains/loss as well as if it's a gainer */}
         <span>
           {coin?.symbol}
-          &nbsp; 
+          &nbsp;
           <Box
-            component="span"  // component span to display the % change in the last 24 hours
+            component="span" // component span to display the % change in the last 24 hours
             sx={{
               color: profit > 0 ? "green" : "red",
               fontSize: 20,
-              fontWeight: 500
+              fontWeight: 500,
             }}
           >
             {profit && "+"}
-            {coin?.price_change_percentage_24h?.toFixed(2)}% 
+            {coin?.price_change_percentage_24h?.toFixed(2)}%
           </Box>
         </span>
 
@@ -83,7 +97,8 @@ const Carousel = () => {  // creating the carousel component with the useState h
     },
   };
 
-  return (  // return the carousel component
+  return (
+    // return the carousel component
     <div
       sx={{
         height: "50%",

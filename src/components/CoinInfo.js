@@ -40,11 +40,22 @@ const CoinInfo = ({ coin }) => {
   const { currency } = CryptoState(); // get the currency from the context API
   const [flag, setFlag] = useState(false); // flag to check if the data is fetched or not.
 
+  //! OLD WORKING CODE
+  // const fetchHistoricData = async () => {
+  //   // function to fetch the historical data of the coin, using the HistoricalChart API.
+  //   const { data } = await axios.get(HistoricalChart(coin.id, days, currency)); // get the data from the API (using axios), display the did, days and currency.
+  //   setFlag(true);
+  //   setHistoricData(data.prices); // we just want the prices from the data, so we set the state to data.prices.
+  // };
+
+  //! NEW AXIOS CODE:
   const fetchHistoricData = async () => {
-    // function to fetch the historical data of the coin, using the HistoricalChart API.
-    const { data } = await axios.get(HistoricalChart(coin.id, days, currency)); // get the data from the API (using axios), display the did, days and currency.
+    const baseUrl = process.env.REACT_APP_API_BASE_URL;
+    const { data } = await axios.get(
+      `${baseUrl}${HistoricalChart(coin.id, days, currency)}`
+    );
     setFlag(true);
-    setHistoricData(data.prices); // we just want the prices from the data, so we set the state to data.prices.
+    setHistoricData(data.prices);
   };
 
   useEffect(() => {
@@ -65,8 +76,7 @@ const CoinInfo = ({ coin }) => {
         ) : (
           // if the data is not fetched, display a circular progress ba, otherwise display the chart.
           <>
-
-{/* ISSUE FROM HERE */}
+            {/* ISSUE FROM HERE */}
 
             {/* Chart */}
             {/* <Line
@@ -97,7 +107,7 @@ const CoinInfo = ({ coin }) => {
               }}
             /> */}
 
-{/* ISSUE TO HERE */}
+            {/* ISSUE TO HERE */}
 
             <div
               style={{
